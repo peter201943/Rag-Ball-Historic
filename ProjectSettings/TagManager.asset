@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Invisible
+  - Ground
+  - Grabbable
   layers:
   - Default
   - TransparentFX
@@ -13,13 +16,13 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
-  - 
-  - 
-  - 
-  - noHitSelf
-  - 
-  - 
+  - invisible
+  - Player 1
+  - Player 2
+  - Player 3
+  - Player 4
+  - room
+  - Floor
   - 
   - 
   - 

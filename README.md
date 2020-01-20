@@ -1,4 +1,5 @@
-# Rag-Ball *Peter-Lab*
+# Rag-Ball *Trailer-Branch*
+
 
 
 ***Historic Branch Backup***
@@ -63,8 +64,4 @@ MIT Software License (C) 2019
 
 ![image](https://drive.google.com/uc?export=view&id=16lsOjNKFDT_Mbfg_prSVg-_OC5hIt2WE)
 Beware the shrimp...
-
-alias ll='clear && echo && pwd && echo  && ls -1X'
-
-
 
