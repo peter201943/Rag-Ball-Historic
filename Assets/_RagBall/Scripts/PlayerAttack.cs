@@ -75,7 +75,9 @@ public class PlayerAttack : MonoBehaviour
         //Throw with arc
         if (Input.GetMouseButtonDown(1))
         {
-            Arc();
+            Vector3 v = transform.forward;
+            v.y = ArcHeight;
+            Throw(v);
         }
 
         //Player wants to throw
@@ -103,7 +105,7 @@ public class PlayerAttack : MonoBehaviour
 
 
     //Throw
-    public void Throw ()
+    void Throw ()
     {
         if (TargetRigidbody != null)
         {
@@ -116,12 +118,10 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    public void Arc()
+    void Throw(Vector3 v)
     {
         if (TargetRigidbody != null)
         {
-            Vector3 v = transform.forward;
-            v.y = ArcHeight;
             TargetRigidbody.AddForce(v * 500);
             GameObject.Find("ScreamAudio").GetComponent<AudioSource>().Play();
             collidedObject.GetComponent<Rigidbody>().freezeRotation = false;

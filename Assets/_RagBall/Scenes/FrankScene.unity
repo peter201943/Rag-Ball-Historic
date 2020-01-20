@@ -8498,7 +8498,6 @@ MonoBehaviour:
   Floor: 1
   IsWalking: 0
   AnimationController: {fileID: 0}
-  mainCamera: {fileID: 1823337046}
 --- !u!54 &1707292804
 Rigidbody:
   m_ObjectHideFlags: 0

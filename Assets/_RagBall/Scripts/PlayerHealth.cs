@@ -33,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
 
     //TEMP Variables
     public float Balance;
-    public float DashSpeed = 500f;
+    public float DashSpeed = 12f;
 
 
     //Effects Variables

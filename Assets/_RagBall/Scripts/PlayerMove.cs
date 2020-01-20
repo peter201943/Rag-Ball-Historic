@@ -15,12 +15,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 
 //PlayerMove Class
 public class PlayerMove : MonoBehaviour
 {
+
+
     //Variables
     public float MoveSpeed = 6f;
     Vector3 Movement;
@@ -30,81 +31,41 @@ public class PlayerMove : MonoBehaviour
     PlayerHealth ThisPlayerHealth;
     public bool IsWalking = false;
     public Animator AnimationController;
-    public Camera mainCamera;
-    public float JumpForce = 10000;
     //public bool CanGrab = false;
-
-    PlayerInputActions inputAction;
-    Vector2 movementInput;
-    Vector2 lookPosition;
-    public bool jumpInput;
-
-
 
 
     //Awake
-    void Awake()
+    void Awake ()
     {
         PlayerRigidbody = GetComponent<Rigidbody>();
         ThisPlayerHealth = GetComponent<PlayerHealth>();
         AnimationController = GetComponent<Animator>();
-
-        inputAction = new PlayerInputActions();
-        inputAction.PlayerControls.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
-        inputAction.PlayerControls.Aim.performed += ctx => lookPosition = ctx.ReadValue<Vector2>();
     }
 
 
     //FixedUpdate
-    void FixedUpdate()
+    void FixedUpdate ()
     {
-
-        var gamepad = Gamepad.current;
-        if (gamepad == null)
-            return;
-
-        if (gamepad.aButton.wasPressedThisFrame)
-        {
-            Jump();
-        }
-
-        if (gamepad.xButton.wasPressedThisFrame)
-        {
-            this.GetComponent<PlayerAttack>().Throw();
-        }
-
-        if (gamepad.bButton.wasPressedThisFrame)
-        {
-            this.GetComponent<PlayerAttack>().Arc();
-        }
-
-        if (gamepad.leftStickButton.wasPressedThisFrame)
-        {
-            Dash();
-        }
-
         //Raw Input for Snappy Movement
         //Horizontal maps to the "A" and "D" keys
         //Vertical maps to the "W" and "S" keys
-        //float H = Input.GetAxisRaw("Horizontal");
-        //float V = Input.GetAxisRaw("Vertical");
-        float H = movementInput.x;
-        float V = movementInput.y;
+        float H = Input.GetAxisRaw("Horizontal");
+        float V = Input.GetAxisRaw("Vertical");
 
         //if (Input.GetKeyDown(KeyCode.Space))
         //{
         //}
 
         //TEMP: Detect if jump requested and available
-        /*if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Jump();
-        }*/
+            Jump ();
+        }
 
         //TEMP: Detect if Dash requested and available
         if (Input.GetKeyDown(KeyCode.LeftShift) && ThisPlayerHealth.Stamina > 0)
         {
-            Dash();
+            Dash ();
         }
 
         //Set walking animation state
@@ -118,8 +79,8 @@ public class PlayerMove : MonoBehaviour
         }
 
         //Separate Functions for modification
-        Move(H, V);
-        Turn();
+        Move (H, V);
+        Turn ();
 
         //Remove Horizontal forces (fixes drifting bug)
         PlayerRigidbody.velocity = new Vector3(0, PlayerRigidbody.velocity.y, 0);
@@ -127,14 +88,14 @@ public class PlayerMove : MonoBehaviour
 
 
     //Move
-    void Move(float H, float V)
+    void Move (float H, float V)
     {
         //Point Vector along X, Y Input
         Movement.Set(H, 0f, V);
 
         //Set Magnitude per frame at the correct Speed and magnitude
         Movement = (Movement.normalized * MoveSpeed * Time.deltaTime);
-
+        
         //Apply Vector to Player at Player's position
         PlayerRigidbody.MovePosition(transform.position + Movement);
 
@@ -150,21 +111,8 @@ public class PlayerMove : MonoBehaviour
 
 
     //Turn
-    void Turn()
+    void Turn ()
     {
-        Vector2 input = lookPosition;
-
-        Vector3 lookDirection = new Vector3(input.x, 0, input.y);
-        var lookRot = mainCamera.transform.TransformDirection(lookDirection);
-        lookRot = Vector3.ProjectOnPlane(lookRot, Vector3.up);
-
-        if (lookRot != Vector3.zero)
-        {
-            Quaternion newRotation = Quaternion.LookRotation(lookRot);
-            PlayerRigidbody.MoveRotation(newRotation);
-        }
-
-        /*
         //Creates and binds a ray to the Mouse
         Ray CameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         
@@ -186,23 +134,12 @@ public class PlayerMove : MonoBehaviour
             //Move the player model by the angle
             PlayerRigidbody.MoveRotation(NewRotation);
         }
-        */
-    }
-
-    private void OnEnable()
-    {
-        inputAction.Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputAction.Disable();
     }
 
 
     //TEMP: Dash
     //Uses regular Rigidbody manipulation
-    public void Dash()
+    void Dash ()
     {
         //Apply force to player in direction of travel
         PlayerRigidbody.AddForce(transform.forward * ThisPlayerHealth.DashSpeed);
@@ -211,10 +148,10 @@ public class PlayerMove : MonoBehaviour
 
     //TEMP: Jump
     //Uses regular Rigidbody manipulation
-    public void Jump()
+    void Jump ()
     {
         //Apply force to player vertically
-        PlayerRigidbody.AddForce(transform.up * JumpForce);
+        PlayerRigidbody.AddForce(transform.up * ThisPlayerHealth.DashSpeed);
     }
 
     /*
