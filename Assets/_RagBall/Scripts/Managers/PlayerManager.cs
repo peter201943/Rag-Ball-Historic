@@ -122,12 +122,13 @@ public class PlayerManager : MonoBehaviour {
     public float[] DashTimes;       // Time until next recovered dash (3 seconds)
     public int[] Staminas;          // How much stamina player has (0 - 100)
     public float[] StaminaTimes;    // Time until next recovered stamina point (0.3 seconds)
-    public float StaminaTime = 0.03f;  // How long to wait to recover stamina
+    public float StaminaTime = 0.3f;  // How long to wait to recover stamina
     public bool[] LeftFoot;         // is the leftfoot good to go? - jumping
     public bool[] RightFoot;        // Is the rightfoot good to go? - jumping
     private float[] movementForce;  // How much force you move with
-    public int MaxStamina = 50;     // How much stamina a player can posses
-    public int MinStamina = 10;      // When to trigger staggering
+    public int MaxStamina = 50;
+    public int MinStamina = 10;
+    public int RangeStamina = 5;
 
     // ButtonArrayVariables
     private bool[] AwasPressed;
@@ -531,8 +532,8 @@ public class PlayerManager : MonoBehaviour {
 
         // Refresh Stagger
         Staggered[pNumber] = false;
-        Staminas[pNumber] = 10;
-        StaminaTimes[pNumber] = 0.3f;
+        Staminas[pNumber] = MaxStamina;
+        StaminaTimes[pNumber] = StaminaTime;
 
         // Refresh their staggerable
         Staggers[pNumber] = PlayerHips[pNumber].GetComponent<Staggerable>();
@@ -569,7 +570,7 @@ public class PlayerManager : MonoBehaviour {
         //Check if he can grab
         //if ((maHips.GetComponent<Grabbable>().iCanGrab == true) && (theirHips != null) && theyAreGrabbable)
         if ((maHips.GetComponent<Grabbable>().iCanGrab == true) && (theirHips != null))
-        {
+            {
             // DEBUG
             Debug.Log("And here we go");
 
@@ -855,11 +856,9 @@ public class PlayerManager : MonoBehaviour {
             // You need 5 stamina to stand up
             // Update Time
             StaminaTimes[i] -= Time.deltaTime;
-            // Update Count (Timer)
-            Debug.Log("StaminaTime P1: " + StaminaTimes[0] + "  Staminas: " + Staminas[0]);
+            // Update Count (Time)r
             if ((StaminaTimes[i] <= 0) && (Staminas[i] < MaxStamina))
             {
-                Debug.Log("++++++++++++++++++++++++++++++++++++++");
                 Staminas[i] += 1;
                 StaminaTimes[i] = StaminaTime;
             }
@@ -883,7 +882,7 @@ public class PlayerManager : MonoBehaviour {
                 Staggers[i].UnStagger();
                 Staggered[i] = false;
             }
-            if (Staminas[i] < MinStamina)
+            if (Staminas[i] < (MinStamina - 2))
             {
                 Staminas[i] = MinStamina;
             }
@@ -1360,6 +1359,7 @@ public class PlayerManager : MonoBehaviour {
                         StartwasPressed[i] = false;
                     }
 
+                    /*
                     //toggle stamina ui
                     if (GamePadStates[i].DPad.Up == ButtonState.Pressed)
                     {
@@ -1395,16 +1395,8 @@ public class PlayerManager : MonoBehaviour {
                             }
                             reference.enabled = false;
                         }
-
-                        /*
-                        StartwasPressed[i] = true;
-                        PauseMenu.enabled = true;
-                        GameIsPaused = true;
-                        PauseMenu.GetComponent<CanvasGroup>().interactable = true;
-                        PauseMenu.transform.Find("Resume_Button").GetComponent<Button>().Select();
-                        Time.timeScale = 0f;
-                        */
                     }
+                    */
 
 
                     //Show stagger stars

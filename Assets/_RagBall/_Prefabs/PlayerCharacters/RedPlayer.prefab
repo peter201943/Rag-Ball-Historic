@@ -379,11 +379,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 190232892650722853}
-<<<<<<< Updated upstream
   - component: {fileID: 6805969378395942744}
   - component: {fileID: 7638606658516851854}
-=======
->>>>>>> Stashed changes
   m_Layer: 15
   m_Name: foot.R
   m_TagString: Untagged
@@ -2475,11 +2472,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8316316060451006150}
-<<<<<<< Updated upstream
   - component: {fileID: 4942707716073111684}
   - component: {fileID: 4749171989017413960}
-=======
->>>>>>> Stashed changes
   m_Layer: 15
   m_Name: foot.L
   m_TagString: Untagged
@@ -3023,16 +3017,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3917433360983066263}
     m_Modifications:
-    - target: {fileID: 5880436266549386552, guid: 9155e33afdff13646844fca47719a7f8,
-        type: 3}
-      propertyPath: m_Name
-      value: Character_DirectionalCircle_Red_01_0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5880436266549386552, guid: 9155e33afdff13646844fca47719a7f8,
-        type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 4483619575486366656, guid: 9155e33afdff13646844fca47719a7f8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3103,7 +3087,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.19805898
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
     - target: {fileID: 5880436266549386552, guid: 9155e33afdff13646844fca47719a7f8,
         type: 3}
       propertyPath: m_Name
@@ -3114,8 +3097,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
-=======
->>>>>>> Stashed changes
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9155e33afdff13646844fca47719a7f8, type: 3}
 --- !u!4 &257022175202252954 stripped
@@ -3137,19 +3118,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5179400429931907268}
     m_Modifications:
-<<<<<<< Updated upstream
-=======
-    - target: {fileID: 7802610896327792555, guid: af2f3ccc16447c84881aa4c5a85d4c2f,
-        type: 3}
-      propertyPath: m_Name
-      value: StaggerStars
-      objectReference: {fileID: 0}
-    - target: {fileID: 7802610896327792555, guid: af2f3ccc16447c84881aa4c5a85d4c2f,
-        type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
->>>>>>> Stashed changes
     - target: {fileID: 6490576146028242360, guid: af2f3ccc16447c84881aa4c5a85d4c2f,
         type: 3}
       propertyPath: m_LocalPosition.x
