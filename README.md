@@ -1,11 +1,9 @@
-# Rag-Ball *master* branch (2020 1 20)
+# Rag-Ball *Austin-Branch*
 
 
+***Historic Backup***
 
- ***Historic Branch Documentation***
 
-
-***Develop the Animator and Scripts to Talk with One Another***
 
 ![image](https://drive.google.com/uc?export=view&id=1oIxbxCgxm0TAaw3DIaL684eTKgDVSbcQ)
 A GMAP 377 Team Project By Massive Shrimp Games
