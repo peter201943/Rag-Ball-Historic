@@ -6,11 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_RagBall/Scenes/StartScene.unity
-    guid: 10f5e703d0c8ea046b366b88fd7ba05f
+    path: Assets/_RagBall/Scenes/StartScreen.unity
+    guid: 1d9dc72c3724ae44abefea7c5921f63f
   - enabled: 1
-    path: Assets/_RagBall/Scenes/FrankScene.unity
-    guid: 47716fb7a02d152419ce21acc4a21067
-  m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: dc4c238d51fdfb84c8c97000115d25cb,
-      type: 2}
+    path: Assets/_RagBall/Scenes/CharacterSelect.unity
+    guid: 38f9dec168738d6418536bc7dec46fde
+  - enabled: 1
+    path: Assets/_RagBall/Scenes/LevelSelect.unity
+    guid: 6e5caf87e0e491642b2d47f24627965c
+  - enabled: 1
+    path: Assets/_RagBall/Scenes/Main_Game.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/_RagBall/Scenes/CourtLevel.unity
+    guid: fde3282a7c1a61f478c486fde6bfb3a0
+  m_configObjects: {}
